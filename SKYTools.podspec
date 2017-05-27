@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SKYTools"#开源项目名 要与开源代码的文件夹同名
-  s.version      = "1.0.0"#开源项目版本
+  s.version      = "1.0.1"#开源项目版本
   s.summary      = "A common tools with me"#简单的描述
   s.homepage     = "https://github.com/skyrock90/SKYTools"#可以写上项目的主页
   s.license      = "MIT"#开原协议
