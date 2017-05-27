@@ -1,0 +1,207 @@
+//
+//  SKYControlTool.h
+//  
+//
+//  Created by SKY on 15/11/3.
+//
+//
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef void(^DoneBlock)();
+typedef void(^RunBlock)(id kobject);
+@interface SKYControlTool : NSObject
+
+//计算文字Size
++ (CGFloat)sizeWithStrArray:(NSArray *)strArray font:(UIFont *)font andMaxWidth:(CGFloat)maxWidth;//获取一个字符串数组中字符串的最大长度
++ (CGSize)sizeWithStr:(NSString *)str font:(UIFont *)font andMaxWidth:(CGFloat)maxWidth;//获取字符串size
+
+//提示框
++ (void)showAlertWithController:(id)controller Message:(NSString *)message doneTitle:(NSString *)doneTitle doneBlock:(DoneBlock)block;//展示一个简单的提示框
++ (void)showAlertWithControllers:(id)controller Message:(NSString *)message leftTitle:(NSString *)leftTitle righTitle:(NSString *)rightTitle leftBlock:(DoneBlock)leftBlock rightBlock:(DoneBlock)rightBlock;//两个按钮提示框
+
+//保存文件到沙盒
++ (BOOL)saveImage:(UIImage *)image withName:(NSString *)imageName;//保存图片到沙盒
++ (UIImage *)getImageWithName:(NSString *)imageName;//丛沙盒获取图片
++ (BOOL)deleteFileWithName:(NSString *)fileName;//删除沙盒文件
+
+//字符串处理
++ (BOOL)stringIsNullOrEmpty:(NSString *)str;
++ (NSString *)handleStringWith:(NSString *)string;
+
+//倒计时
++ (void)addCutDownWithTime:(NSInteger)time  runBlock:(RunBlock)runBlock doneBlock:(DoneBlock)block;
+
+@end
+//***********************************************************************************
+#pragma mark 自定义Button
+@interface UIButton (SKYControlTool)
+
++ (UIButton *)buttonWithFrame:(CGRect)frame action:(SEL)sel fontSize:(CGFloat)fontSize title:(NSString *)title andTarget:(id)target;//MyButton1
+
++ (UIButton *)buttonWithFrame:(CGRect)frame action:(SEL)sel normalImageName:(NSString *)normalImage selectedImageName:(NSString *)selectedImage fontSize:(CGFloat)fontSize title:(NSString *)title andTarget:(id)target;//创建button方法2
+
+//注意:以图片为参考对象,四个方位(top,left,bottom,right)
++ (UIButton *)buttonWithFrame:(CGRect)frame action:(SEL)sel insetImageName:(NSString *)image edgeInsets:(UIEdgeInsets)edgeInsets fontSize:(CGFloat)fontSize title:(NSString *)title andTarget:(id)target;//MyButton3
+
++ (UIButton *)buttonWithFrame:(CGRect)frame action:(SEL)sel backImageName:(NSString *)backImage fontSize:(CGFloat)fontSize title:(NSString *)title andTarget:(id)target;
+
+- (void)startCutDownWithTime:(NSInteger)time doneBackColor:(UIColor *)doneColor runBackColor:(UIColor *)runColor title:(NSString *)title runTitle:(NSString *)runTitle;//倒计时
+
+@end
+
+
+#pragma mark 自定义Button
+@interface UIBarButtonItem (SKYControlTool)
+
++ (UIBarButtonItem *)barButtonItemWithImageName:(NSString *)imageName target:(id)target sel:(SEL)sel andTitle:(NSString *)title;
+
++ (UIBarButtonItem *)barButtonItemWithImageName:(NSString *)imageName edgeInsets:(UIEdgeInsets)edgeInsets target:(id)target andSel:(SEL)sel;
+
++ (UIBarButtonItem *)barButtonItemWithTarget:(id)target sel:(SEL)sel edgeInsets:(UIEdgeInsets)edgeInsets andTitle:(NSString *)title;
+
+@end
+
+//***********************************************************************************
+#pragma mark 自定义Label
+@interface UILabel (SKYControlTool)
+
++ (UILabel *)labelWithText:(NSString *)text fontSize:(CGFloat)fontSize textColor:(UIColor *)textColor;
+
++ (UILabel *)labelWithFrame:(CGRect)frame text:(NSString *)text fontSize:(CGFloat)fontSize textColor:(UIColor *)textColor andBackColor:(UIColor *)backColor;
+
++ (UILabel *)labelWithContent:(NSString *)content font:(CGFloat)font lineSpace:(CGFloat)lineSpace andTextColor:(UIColor *)textColor;
+
++ (UILabel *)labelWithText:(NSString *)text font:(CGFloat)font;//定制绿色带边框label
+
+@end
+
+
+
+//***********************************************************************************
+typedef NS_OPTIONS(NSUInteger, RectCorner) {
+    RectCornerTopLeft     = 1 << 0,
+    RectCornerTopRight    = 1 << 1,
+    RectCornerBottomLeft  = 1 << 2,
+    RectCornerBottomRight = 1 << 3,
+    RectCornerTopTwo      = 1 << 4,
+    RectCornerBottomTwo   = 1 << 5,
+};
+#pragma mark 自定义UIView
+@interface UIView (SKYControlTool)
+
++ (UIView *)viewWithFrame:(CGRect)frame andBackColor:(UIColor *)backColor;
+
++ (UIView *)viewWithFrame:(CGRect)frame backColor:(UIColor *)backColor andCorner:(RectCorner)rectConer andCornerRedius:(NSInteger)redius;//可切任意圆角
+
++ (UIView *)viewWithFrame:(CGRect)frame imageName:(NSString *)imageName tapAction:(SEL)sel titleColor:(UIColor *)titleColor fontSize:(CGFloat)fontSize target:(id)target andTitle:(NSString *)title;//可点击的视图
+
++ (UIView *)accessoryViewWithFrame:(CGRect)frame cleanButtonSel:(SEL)cleanSel resignButtonSel:(SEL)resignSel fontSize:(CGFloat)fontSize target:(id)target backColor:(UIColor *)backColor resignButtonTitle:(NSString *)resignTitle andCleanButtonTitle:(NSString *)cleanTitle;//键盘附件视图
+
+@end
+
+
+//***********************************************************************************
+#pragma mark 自定义UIImageView
+@interface UIImageView (SKYControlTool)
+
++ (UIImageView *)imageViewWithFrame:(CGRect)frame imageName:(NSString *)imageName andCornerRadius:(CGFloat)cornerRadius ;
+
+@end
+
+
+//***********************************************************************************
+#pragma mark 自定义UIAlertView
+@interface UIAlertView (SKYControlTool)<UIAlertViewDelegate>
+
++ (void)showAlertViewPromptWithMessage:(NSString *)message andDelegate:(id)delegate;
++ (void)showAlertViewChooseWithMessage:(NSString *)message andDelegate:(id)delegate;
++ (void)showAlertViewUpdateWithMessage:(NSString *)message andDelegate:(id)delegate;
+
+@end
+
+
+
+
+//***********************************************************************************
+#pragma mark 自定义UIImage
+@interface UIImage (SKYControlTool)
+
+//返回特定尺寸的UImage  ,  image参数为原图片，size为要设定的图片大小
++ (UIImage*)resizeImageToSize:(CGSize)size sizeOfImage:(UIImage*)image;
+
+//在指定的视图内进行截屏操作,返回截屏后的图片
++ (UIImage *)imageWithScreenContentsInView:(UIView *)view;
+
+//将图片瓦片平铺
++ (UIImage *)resizedImageWithName:(NSString *)name left:(CGFloat)left top:(CGFloat)top;
+
+@end
+
+
+
+
+//***********************************************************************************
+#pragma mark 自定义UIFiled
+@interface UITextField (SKYControlTool)
+
++ (UITextField *)textFieldWithFrame:(CGRect)frame placeholder:(NSString *)placeholder fontSize:(CGFloat)fontSize andDelegate:(id)delegate;
+
+@end
+
+
+//***********************************************************************************
+#pragma mark 自定义UIcolor
+@interface UIColor (SKYControlTool)
+
++ (UIColor *)colorToRGBWithHexValue:(NSString *)inColorString andAlpha:(CGFloat)alpha;
+
+@end
+
+
+//***********************************************************************************
+#pragma mark 自定义NSString
+@interface NSMutableAttributedString (SKYControlTool)
+
++ (NSMutableAttributedString *)stringWithText:(NSString *)text range:(NSRange)range selectedTextColor:(UIColor *)color andFontOfSize:(CGFloat)font;
+
+@end
+
+//***********************************************************************************
+#pragma mark 自定义NSDate
+@interface NSDate (SKYControlTool)
+/**
+ *  常用日期结构：
+ yyyy-MM-dd HH:mm:ss.SSS
+ yyyy-MM-dd HH:mm:ss
+ yyyy-MM-dd
+ MM dd yyyy
+ */
++ (NSString *)getDateStrWithPhoneWithDateformatterStr:(NSString *)formatterStr;
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
