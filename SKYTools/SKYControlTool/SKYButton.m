@@ -16,7 +16,7 @@
         self.layer.cornerRadius = 3;
         self.backgroundColor = [UIColor whiteColor];
         self.layer.borderWidth = 0.7;
-        self.layer.borderColor = RGBA(230, 230, 230, 1).CGColor;
+        self.layer.borderColor = SKYRGBA(230, 230, 230, 1).CGColor;
         //搜索
         UIImageView * searchImage = [[UIImageView alloc]initWithFrame:CGRectMake(38, 8, 12, 12)];
         searchImage.image = [UIImage imageNamed:@"icon_search"];
@@ -25,7 +25,7 @@
         UILabel * placeHolder = [[UILabel alloc]init];
         placeHolder.text = @"请输入搜索内容";
         placeHolder.frame = CGRectMake(CGRectGetMaxX(searchImage.frame)+ 6,0, frame.size.width-65, 28);
-        placeHolder.textColor = RGBA(210, 210, 210, 1);
+        placeHolder.textColor = SKYRGBA(210, 210, 210, 1);
         placeHolder.font = [UIFont systemFontOfSize:14];
         [self addSubview:placeHolder];
     }

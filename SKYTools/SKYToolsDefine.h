@@ -18,9 +18,9 @@
 
 //----------------------颜色类---------------------------
 // 16进制颜色转换
-#define SKYHexColor(value, alpha)                                 [UIColor sky_colorWithHexValue:value andAlpha:alpha]
+#define SKYHexColor(value, alpha)                                       [SKYControlTool sky_colorWithHexValue:value andAlpha:alpha]
 //RGBA色值
-#define RGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/)       [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
+#define SKYRGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/)       [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
 
 //颜色
 #define SKYBackgroundColor                  SKYHexColor(@"F1F0F3", 1)//系统背景色

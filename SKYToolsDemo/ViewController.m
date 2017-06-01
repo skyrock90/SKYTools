@@ -20,7 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
+    UILabel *label = [UILabel sky_labelWithText:@"jadhjkhkj" fontSize:13 textColor:SKYHexColor(@"dfdfdf", 1)];
+    label.frame = CGRectMake(30, 80, 150, 20);
+    [self.view addSubview:label];
     
 }
 
