@@ -205,7 +205,8 @@
                                      NSBackgroundColorAttributeName : [UIColor whiteColor],
                                      NSFontAttributeName:[UIFont boldSystemFontOfSize:18]
                                      };
-    controller.navigationBar.titleTextAttributes = textAttributes; 
+    controller.navigationBar.titleTextAttributes = textAttributes;
+    controller.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 

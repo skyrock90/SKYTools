@@ -11,6 +11,9 @@
 
 
 @interface SKYFileTool : NSObject
+#pragma mark -- 获取文件夹大小
++ (float ) sky_getFolderSizeAtPath:(NSString*) folderPath;
+
 //文件操作
 + (BOOL)sky_writeMessage:(NSDictionary *)message toPlistName:(NSString *)plistName;//将信息写入自定义的plist文件路径下
 + (BOOL)sky_writeImageToSandBox:(UIImage *)image imageName:(NSString *)name;//保存图片

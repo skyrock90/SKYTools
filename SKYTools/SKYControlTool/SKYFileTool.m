@@ -26,6 +26,20 @@
 #import "SKYFileTool.h"
 
 @implementation SKYFileTool
+#pragma mark -- 获取文件夹大小
++ (float ) sky_getFolderSizeAtPath:(NSString*) folderPath {
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:folderPath]) return 0;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+    NSString* fileName;
+    long long folderSize = 0;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        NSString* fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+        folderSize += [self sky_getFolderSizeAtPath:fileAbsolutePath];
+    }
+    return folderSize/(1024.0*1024.0);
+}
+
 #pragma mark -- 将信息写入自定义plist文件
 + (BOOL)sky_writeMessage:(id)message toPlistName:(NSString *)plistName {
     //创建plist文件夹
