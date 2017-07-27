@@ -18,35 +18,84 @@
     return iPhoneName;
 }
 
+
+#pragma mark -- 获取设备外网IP
++ (NSDictionary *)sky_getDeviceWANIPAdress {
+    NSError *error;
+    NSURL *ipURL = [NSURL URLWithString:@"http://pv.sohu.com/cityjson?ie=utf-8"];
+    NSMutableString *ip = [NSMutableString stringWithContentsOfURL:ipURL encoding:NSUTF8StringEncoding error:&error];
+    
+    //判断返回字符串是否为所需数据
+    if ([ip hasPrefix:@"var returnCitySN = "]) {
+        //对字符串进行处理，然后进行json解析 删除字符串多余字符串
+        NSRange range = NSMakeRange(0, 19);
+        [ip deleteCharactersInRange:range];
+        NSString * nowIp =[ip substringToIndex:ip.length-1];
+        
+        //将字符串转换成二进制进行Json解析
+        NSData * data = [nowIp dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        return dict;
+    }
+    return nil;
+}
+
+
 #pragma mark -- 获取磁盘空间
 // 获取磁盘总空间
-+ (int64_t)sky_getTotalDiskSpace {
++ (NSString *)sky_getTotalDiskSpace {
     NSError *error = nil;
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
-    if (error) return -1;
+    if (error) return nil;
     int64_t space =  [[attrs objectForKey:NSFileSystemSize] longLongValue];
-    if (space < 0) space = -1;
-    return space;
+    double dspace = space/(1024*1024);
+    NSString *sizeStr = nil;
+    if (dspace > 1024) {
+        sizeStr = [NSString stringWithFormat:@"%.1fGB",dspace/1024];
+    }else{
+        sizeStr = [NSString stringWithFormat:@"%.1fMB",dspace];
+    }
+    
+    return sizeStr;
 }
 
 // 获取未使用的磁盘空间
-+ (int64_t)sky_getFreeDiskSpace {
++ (NSString *)sky_getFreeDiskSpace {
     NSError *error = nil;
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
-    if (error) return -1;
+    if (error) return nil;
     int64_t space =  [[attrs objectForKey:NSFileSystemFreeSize] longLongValue];
-    if (space < 0) space = -1;
-    return space;
+    double dspace = space/(1024*1024);
+    NSString *sizeStr = nil;
+    if (dspace > 1024) {
+        sizeStr = [NSString stringWithFormat:@"%.1fGB",dspace/1024];
+    }else{
+        sizeStr = [NSString stringWithFormat:@"%.1fMB",dspace];
+    }
+    
+    return sizeStr;
 }
 
 // 获取已使用的磁盘空间
-+ (int64_t)sky_getUsedDiskSpace {
-    int64_t totalDisk = [self sky_getTotalDiskSpace];
-    int64_t freeDisk = [self sky_getFreeDiskSpace];
-    if (totalDisk < 0 || freeDisk < 0) return -1;
++ (NSString *)sky_getUsedDiskSpace {
+    NSError *error = nil;
+    NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
+    if (error) return nil;
+    int64_t totalDisk =  [[attrs objectForKey:NSFileSystemSize] longLongValue];
+    int64_t freeDisk  =  [[attrs objectForKey:NSFileSystemFreeSize] longLongValue];
+    
+    if (totalDisk < 0 || freeDisk < 0) return nil;
     int64_t usedDisk = totalDisk - freeDisk;
-    if (usedDisk < 0) usedDisk = -1;
-    return usedDisk;
+    double dspace = usedDisk/(1024*1024);
+    NSString *sizeStr = nil;
+    if (dspace > 1024) {
+        sizeStr = [NSString stringWithFormat:@"%.1fGB",dspace/1024];
+    }else{
+        sizeStr = [NSString stringWithFormat:@"%.1fMB",dspace];
+    }
+    
+    return sizeStr;
 }
 
 

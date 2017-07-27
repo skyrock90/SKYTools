@@ -15,6 +15,8 @@
 		331C1F151ED7C06E0063B32E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 331C1F131ED7C06E0063B32E /* LaunchScreen.storyboard */; };
 		331C1F201ED7C06F0063B32E /* SKYToolsDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 331C1F1F1ED7C06F0063B32E /* SKYToolsDemoTests.m */; };
 		331C1F2B1ED7C06F0063B32E /* SKYToolsDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 331C1F2A1ED7C06F0063B32E /* SKYToolsDemoUITests.m */; };
+		33AA38D81F288EAE007E8DEA /* SKYDeviceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AA38D51F288EAE007E8DEA /* SKYDeviceTool.m */; };
+		33AA38D91F288EAE007E8DEA /* SKYFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AA38D71F288EAE007E8DEA /* SKYFileTool.m */; };
 		33E1B2911ED921FD007A1FD0 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2721ED921FD007A1FD0 /* Foundation+Log.m */; };
 		33E1B2921ED921FD007A1FD0 /* NSDate+SKY.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2741ED921FD007A1FD0 /* NSDate+SKY.m */; };
 		33E1B2931ED921FD007A1FD0 /* NSString+SKY.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2761ED921FD007A1FD0 /* NSString+SKY.m */; };
@@ -22,8 +24,6 @@
 		33E1B2951ED921FD007A1FD0 /* SKYAnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2791ED921FD007A1FD0 /* SKYAnimationTool.m */; };
 		33E1B2961ED921FD007A1FD0 /* SKYButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B27B1ED921FD007A1FD0 /* SKYButton.m */; };
 		33E1B2971ED921FD007A1FD0 /* SKYControlTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B27D1ED921FD007A1FD0 /* SKYControlTool.m */; };
-		33E1B2981ED921FD007A1FD0 /* SKYDeviceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B27F1ED921FD007A1FD0 /* SKYDeviceTool.m */; };
-		33E1B2991ED921FD007A1FD0 /* SKYFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2811ED921FD007A1FD0 /* SKYFileTool.m */; };
 		33E1B29A1ED921FD007A1FD0 /* SKYImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2831ED921FD007A1FD0 /* SKYImageTool.m */; };
 		33E1B29B1ED921FD007A1FD0 /* SKYPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2851ED921FD007A1FD0 /* SKYPredicate.m */; };
 		33E1B29C1ED921FD007A1FD0 /* UILabel+SKY.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E1B2871ED921FD007A1FD0 /* UILabel+SKY.m */; };
@@ -65,6 +65,10 @@
 		331C1F261ED7C06F0063B32E /* SKYToolsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKYToolsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C1F2A1ED7C06F0063B32E /* SKYToolsDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKYToolsDemoUITests.m; sourceTree = "<group>"; };
 		331C1F2C1ED7C06F0063B32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33AA38D41F288EAE007E8DEA /* SKYDeviceTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYDeviceTool.h; sourceTree = "<group>"; };
+		33AA38D51F288EAE007E8DEA /* SKYDeviceTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYDeviceTool.m; sourceTree = "<group>"; };
+		33AA38D61F288EAE007E8DEA /* SKYFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYFileTool.h; sourceTree = "<group>"; };
+		33AA38D71F288EAE007E8DEA /* SKYFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYFileTool.m; sourceTree = "<group>"; };
 		33E1B2721ED921FD007A1FD0 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		33E1B2731ED921FD007A1FD0 /* NSDate+SKY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SKY.h"; sourceTree = "<group>"; };
 		33E1B2741ED921FD007A1FD0 /* NSDate+SKY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SKY.m"; sourceTree = "<group>"; };
@@ -77,10 +81,6 @@
 		33E1B27B1ED921FD007A1FD0 /* SKYButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYButton.m; sourceTree = "<group>"; };
 		33E1B27C1ED921FD007A1FD0 /* SKYControlTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYControlTool.h; sourceTree = "<group>"; };
 		33E1B27D1ED921FD007A1FD0 /* SKYControlTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYControlTool.m; sourceTree = "<group>"; };
-		33E1B27E1ED921FD007A1FD0 /* SKYDeviceTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYDeviceTool.h; sourceTree = "<group>"; };
-		33E1B27F1ED921FD007A1FD0 /* SKYDeviceTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYDeviceTool.m; sourceTree = "<group>"; };
-		33E1B2801ED921FD007A1FD0 /* SKYFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYFileTool.h; sourceTree = "<group>"; };
-		33E1B2811ED921FD007A1FD0 /* SKYFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYFileTool.m; sourceTree = "<group>"; };
 		33E1B2821ED921FD007A1FD0 /* SKYImageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYImageTool.h; sourceTree = "<group>"; };
 		33E1B2831ED921FD007A1FD0 /* SKYImageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYImageTool.m; sourceTree = "<group>"; };
 		33E1B2841ED921FD007A1FD0 /* SKYPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYPredicate.h; sourceTree = "<group>"; };
@@ -210,10 +210,10 @@
 				33E1B27B1ED921FD007A1FD0 /* SKYButton.m */,
 				33E1B27C1ED921FD007A1FD0 /* SKYControlTool.h */,
 				33E1B27D1ED921FD007A1FD0 /* SKYControlTool.m */,
-				33E1B27E1ED921FD007A1FD0 /* SKYDeviceTool.h */,
-				33E1B27F1ED921FD007A1FD0 /* SKYDeviceTool.m */,
-				33E1B2801ED921FD007A1FD0 /* SKYFileTool.h */,
-				33E1B2811ED921FD007A1FD0 /* SKYFileTool.m */,
+				33AA38D41F288EAE007E8DEA /* SKYDeviceTool.h */,
+				33AA38D51F288EAE007E8DEA /* SKYDeviceTool.m */,
+				33AA38D61F288EAE007E8DEA /* SKYFileTool.h */,
+				33AA38D71F288EAE007E8DEA /* SKYFileTool.m */,
 				33E1B2821ED921FD007A1FD0 /* SKYImageTool.h */,
 				33E1B2831ED921FD007A1FD0 /* SKYImageTool.m */,
 				33E1B2841ED921FD007A1FD0 /* SKYPredicate.h */,
@@ -369,18 +369,18 @@
 			files = (
 				331C1F0D1ED7C06E0063B32E /* ViewController.m in Sources */,
 				33E1B2971ED921FD007A1FD0 /* SKYControlTool.m in Sources */,
-				33E1B2981ED921FD007A1FD0 /* SKYDeviceTool.m in Sources */,
 				33E1B29A1ED921FD007A1FD0 /* SKYImageTool.m in Sources */,
 				33E1B29C1ED921FD007A1FD0 /* UILabel+SKY.m in Sources */,
 				33E1B2931ED921FD007A1FD0 /* NSString+SKY.m in Sources */,
 				33E1B2961ED921FD007A1FD0 /* SKYButton.m in Sources */,
+				33AA38D81F288EAE007E8DEA /* SKYDeviceTool.m in Sources */,
 				33E1B2951ED921FD007A1FD0 /* SKYAnimationTool.m in Sources */,
 				331C1F0A1ED7C06E0063B32E /* AppDelegate.m in Sources */,
 				331C1F071ED7C06E0063B32E /* main.m in Sources */,
 				33E1B29B1ED921FD007A1FD0 /* SKYPredicate.m in Sources */,
 				33E1B2911ED921FD007A1FD0 /* Foundation+Log.m in Sources */,
-				33E1B2991ED921FD007A1FD0 /* SKYFileTool.m in Sources */,
 				33E1B2941ED921FD007A1FD0 /* NullSafe.m in Sources */,
+				33AA38D91F288EAE007E8DEA /* SKYFileTool.m in Sources */,
 				33E1B2A01ED921FD007A1FD0 /* UIView+Extension.m in Sources */,
 				33E1B2921ED921FD007A1FD0 /* NSDate+SKY.m in Sources */,
 			);
