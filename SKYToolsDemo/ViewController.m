@@ -23,6 +23,7 @@
     UILabel *label = [UILabel sky_labelWithText:@"jadhjkhkj" fontSize:13 textColor:SKYHexColor(@"dfdfdf", 1)];
     label.frame = CGRectMake(30, 80, 150, 20);
     [self.view addSubview:label];
+    //一个github对应一个ssh key
     
 }
 
